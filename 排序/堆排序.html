@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function heapSort(arr){
+				if (Object.prototype.toString.call(arr).slice(8, -1)==='Array') {
+					var heapSize=arr.length,temp;
+					//建堆
+					for(var i=Math.floor(heapSize/2)-1;i>=0;i--){
+						heapify(arr,i,heapSize);
+					}
+					//堆排序
+					for (var j = heapSize - 1; j >= 1; j--) {
+			            var temp = arr[0];
+			            arr[0] = arr[j];
+			            arr[j] = temp;
+			            heapify(arr,0,--heapSize);
+			        }
+					return arr;	
+				}
+				
+			}
+			//维护堆
+			function heapify(arr,i,heapSize){
+				if(Object.prototype.toString.call(arr).slice(8,-1) === 'Array' && typeof i === 'number') {
+					var leftIndex=2*i+1,
+					rightIndex=2*i+2,
+					largest=i;
+					if(leftIndex<heapSize &&　arr[leftIndex]>arr[largest]){
+						largest=leftIndex;
+					}
+					if(rightIndex<heapSize && arr[rightIndex]>arr[largest]){
+						largest=rightIndex;
+					}
+					if(largest!==i){
+						var temp=arr[i];
+						arr[i]=arr[largest];
+						arr[largest]=temp;
+						heapify(arr,largest,heapSize);
+					}
+				}
+			}
+			
+			console.log(heapSort([1,5,3,9,7,24,8,6]));
+		</script>
+	</body>
+</html>

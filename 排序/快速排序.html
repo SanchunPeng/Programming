@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function quickSort(arr){   //适合大型数据集合，处理小数据集时反而会下降
+				if(Object.prototype.toString.call(arr)==='[object Array]'){
+					if(arr.length <=1){
+						return arr;
+					}
+					var prvotIndex=Math.floor(arr.length/2),
+					prvot=arr.splice(prvotIndex,1)[0],
+					left=[],
+					right=[];
+					for(var i=0;i<arr.length;i++){
+						if(arr[i]<prvot){
+							left.push(arr[i]);
+						}else{
+							right.push(arr[i]);
+						}
+					}
+					return quickSort(left).concat([prvot],quickSort(right));
+				}
+			}
+			console.log(quickSort([1,5,3,9,7,24,8,6]));
+			
+			function quickSort1(arr){   //适合大型数据集合，处理小数据集时反而会下降
+				if(Object.prototype.toString.call(arr)==='[object Array]'){
+					if(arr.length <=1){
+						return arr;
+					}
+					var prvot=arr[0],
+					left=[],
+					right=[];
+					for(var i=1;i<arr.length;i++){
+						if(arr[i] < prvot){
+							left.push(arr[i]);
+						}else{
+							right.push(arr[i]);
+						}
+					}
+					return quickSort(left).concat([prvot],quickSort(right));
+				}
+			}
+			console.log(quickSort1([1,5,3,9,7,24,8,6]));
+		</script>
+	</body>
+</html>

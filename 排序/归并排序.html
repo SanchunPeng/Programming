@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function mergeSort(arr){
+				if(Object.prototype.toString.call(arr)==='[object Array]'){
+					var len=arr.length;
+					if(len<=1){
+						return arr;
+					}
+					var mid=Math.floor(len/2),
+					left=arr.slice(0,mid),
+					right=arr.slice(mid);
+					return merge(mergeSort(left),mergeSort(right));
+				}	
+			}
+			function merge(left,right){
+				var result=[];
+				while(left.length &&　right.length){
+					if(left[0]<=right[0]){
+						result.push(left.shift());
+					}else{
+						result.push(right.shift());
+					}
+				}
+				if(left.length){
+					result=result.concat(left);
+				}
+				if(right.length){
+					result=result.concat(right);
+				}
+				return result;
+			}
+			console.log(mergeSort([1,5,3,9,7,24,8,6]));
+		</script>
+	</body>
+</html>

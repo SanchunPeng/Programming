@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//一行数据
+			var readline = require('readline');
+			const rl = readline.createInterface({
+			        input: process.stdin,
+			        output: process.stdout
+			});
+			rl.on('line', function(line){
+			    var arr=line.split(' ').map(function(x){return parseInt(x)});
+			    
+			    
+			    
+			});
+			//多行数据
+			var readline = require('readline');
+			const rl = readline.createInterface({
+			  input: process.stdin,
+			  out: process.stdout
+			});
+			var countLine = 1;
+			var token = [];
+			rl.on('line', function(line) {
+			  token.push(line);
+			  if (countLine === 2) {
+			    var str0 = token[0].split('');
+			    var str1 = token[1].split('');
+			    
+			    
+			    
+			    
+			  } else {
+			    countLine++;
+			  }
+			});
+		</script>
+	</body>
+</html>

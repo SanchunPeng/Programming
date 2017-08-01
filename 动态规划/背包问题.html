@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//保险箱中有5减物品，他们的尺寸是3，4，7，8，9，而他们的价值是4，5，10，11，13，但是背包的容积只有16
+			function max(a,b){
+				return (a>b) ? a:b
+			}
+			function solve(){
+				var value=[4,5,10,11,13],
+				size=[3,4,7,8,9],
+				maxSize=16,
+				chooseSize=5,
+				result=[];
+				for(var k=0;k <= maxSize;k++){
+					result[k]=[];
+				}
+				for(var i=0; i<=chooseSize;i++){
+					for(var j=0; j<=maxSize; j++){
+						if(i==0 || j==0){
+							result[i][j]= 0;
+						}else if(size[i-1] > j){
+							result[i][j]= result[i-1][j];
+						}else{
+							result[i][j]=max(result[i-1][j],value[i-1]+result[i-1][j-size[i-1]]);
+						}
+					}
+				}
+				return result[chooseSize][maxSize];
+			}
+			console.log(solve());
+		</script>
+	</body>
+</html>
