@@ -22,7 +22,7 @@
 			var readline = require('readline');
 			const rl = readline.createInterface({
 			  input: process.stdin,
-			  out: process.stdout
+			  output: process.stdout
 			});
 			var countLine = 1;
 			var token = [];
@@ -38,6 +38,32 @@
 			  } else {
 			    countLine++;
 			  }
+			});
+			
+			
+			//不知道确切的行数
+			var readline = require('readline'); 
+			rl = readline.createInterface({ 
+			      input: process.stdin, 
+			      output: process.stdout 
+			  }); 
+			var num = 0; 
+			rl.on('line', function(line) { 
+			      var inputs = line.trim().split(' '); //一定要加上trim()
+			      var result; 
+			      if(inputs.length == 1) { 
+			          num = parseInt(inputs[0]); 
+			      } else if(inputs.length == num) { 
+			          result = inputs.map(function(val, index) { 
+			              if(val % 2== 0) { 
+			                  return parseInt(Number(val).toString(2).split('').reverse().join(''), 2); 
+			              }else{ 
+			                  return val; 
+			              } 
+			          }); 
+			          console.log(result.join(' ')); 
+			          num = 0; 
+			      } 
 			});
 		</script>
 	</body>
