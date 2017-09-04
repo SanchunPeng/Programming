@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function findMaxDuplicateChar(str){
+				if(str.length==1){
+					return str;
+				}
+				var obj={};
+				for(var i=0;i<str.length;i++){
+					if(!obj[str[i]]){
+						obj[str[i]]=1;
+					}else{
+						obj[str[i]]++;
+					}
+				}
+				var maxKey="",maxValue=1;
+				for(var j in obj){
+					if(obj[j]>maxValue){
+						maxKey=j;
+						maxValue=obj[j];
+					}
+				}
+				return maxKey;
+			}
+			var str="abcdabvcdaadadalcvavndsaaaaaaaaaa";
+			console.log(findMaxDuplicateChar(str));
+		</script>
+	</body>
+</html>

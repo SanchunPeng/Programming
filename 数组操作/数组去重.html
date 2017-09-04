@@ -59,20 +59,20 @@
 			}
 			console.log(unique4([1,2,2,2,12,3,4,5]));
 		
-			function unique5(arr){//优化的遍历数组，推荐的方法，获取没重复的最右一值放入新数组。
+			function unique5(arr){//优化的遍历数组，推荐的方法，获取没重复的最右一值放入新数组。有这个要求的可以使用这个方法
 			    var result = [];
 			    var len = arr.length;
 			    for(var i = 0; i < len; i++) {
 			        for(var j = i + 1; j < len; j++){
 			            if (arr[i] === arr[j]){
-			                j=++i;
+			                j=++i;//i=i+1;j=i;
 			            }
 			        }
 			        result.push(arr[i]);
 			    }
 			    return result;
 			}
-			console.log(unique5([1,2,2,2,12,3,2,4,5]));
+			console.log(unique5([1,2,2,2,12,3,4,5]));
 			
 			
 			function unique6(arr){
