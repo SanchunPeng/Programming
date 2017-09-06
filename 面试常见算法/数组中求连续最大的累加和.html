@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function sumMax(arr){
+				var max=0;
+				var temp=0;
+				if(arr.length>=1){
+					max=arr[0];
+				}				
+				for(var i=0;i<arr.length;i++){
+					temp+=arr[i];
+					if(temp>max){
+						max=temp;
+					}else if(temp<0){
+						temp=0;
+					}
+				}
+				return max;
+			}
+			var arr=[-3];
+			console.log(sumMax(arr));
+		</script>
+	</body>
+</html>
