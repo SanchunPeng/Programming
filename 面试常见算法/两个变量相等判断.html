@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			console.log(diff(1,1))// true
+			console.log(diff(1,'1')) // false
+			console.log(diff({name: 'cvte'},{name:'cvte'})) // true
+			console.log(diff({name: 'cvte'},{name:'seewo'})) //false
+			function diff(var1,var2){
+				if(var1 instanceof Array && var2 instanceof Array){
+					return var1.toString()===var2.toString();
+				}else if(var1 instanceof Object && var2 instanceof Object){
+					return JSON.stringify(var1)===JSON.stringify(var2);
+				}else{
+					return var1===var2;
+				}
+			
+			}
+		</script>
+	</body>
+</html>
