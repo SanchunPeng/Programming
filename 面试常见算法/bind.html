@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			Function.prototype.bind=function(context){
+				var args=Array.prototype.slice.call(arguments,1),
+					F=function(){},
+					self=this,
+					bound=function(){
+						return self.apply(this instanceof F? this:context || window,args.concat(Array.prototype.slice.call(arguments)));
+					}
+				F.prototype=self.prototype;
+				bound.prototype=new F();
+				return bound;
+			}
+		</script>
+	</body>
+</html>
