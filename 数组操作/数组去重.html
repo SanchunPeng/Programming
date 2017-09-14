@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<script>
-			function unique1(arr){
+			function unique11(arr){
 				arr.sort(function(a,b){return a-b;});
 				var result=[];
 				for(var i=0;i<arr.length;i++){
@@ -16,15 +16,22 @@
 				}
 				return result;
 			}
-			console.log(unique1([1,2,2,2,12,3,4,5]));
+			console.log(unique11([1,2,2,2,12,3,4,5]));
+			
+			
+			function unique12(arr){
+				return a.concat().sort().filter(function(value, index, array) {
+				    return !index || value != array[index - 1];
+				});
+			}
+			console.log(unique12([1,2,2,2,12,3,4,5]));
 			
 			
 			
-			
-			function unique2(arr){//更快一点
+			function unique21(arr){//更快一点
 				var  result=[];
 				for(var i=0;i<arr.length;i++){
-					if(result.indexOf(arr[i])===-1){
+					if(result.indexOf(arr[i])===-1){//可以改成(result.indexOf(arr[i])===-1)&&result.push(arr[i]);
 						result.push(arr[i]);
 					}
 				}
@@ -32,10 +39,18 @@
 			}
 			console.log(unique2([1,2,2,2,12,3,4,5]));
 			
+			function unique22(arr){//更快一点
+				var  result=[];
+				for(var i=0;i<arr.length;i++){
+					(result.indexOf(arr[i])===-1)&&result.push(arr[i]);
+				}
+				return result;
+			}
+			console.log(unique22([1,2,2,2,12,3,4,5]));
 			
 			
 			
-			function unique3(arr){
+			function unique31(arr){
 				var obj={},result=[];
 				for(var i=0;i<arr.length;i++){
 					if(!obj[arr[i]]){
@@ -45,10 +60,18 @@
 				}
 				return result;
 			}
-			console.log(unique3([1,2,2,2,12,3,4,5]));
+			console.log(unique31([1,2,2,2,12,3,4,5]));
+			
+			function unique32(arr){
+				var obj={};
+				return arr.filter(function(item) {
+				    return obj.hasOwnProperty(item) ? false : (obj[item] = true);
+				});
+			}
+			console.log(unique31([1,2,2,2,12,3,4,5]));
 			
 			
-			function unique4(arr){
+			function unique41(arr){
 				var result=[];
 				for(var i=0;i<arr.length;i++){
 					if(arr.indexOf(arr[i])===i){
@@ -57,7 +80,20 @@
 				}
 				return result;
 			}
-			console.log(unique4([1,2,2,2,12,3,4,5]));
+			console.log(unique41([1,2,2,2,12,3,4,5]));
+			
+			
+			function unique42(arr){
+				var  result=[];
+				result=arr.filter(function(value,index,array){
+					return array.indexOf(value)===index;
+				})
+				return result;
+			}
+			console.log(unique42([1,2,2,2,12,3,4,5]));
+			
+		
+		
 		
 			function unique5(arr){//优化的遍历数组，推荐的方法，获取没重复的最右一值放入新数组。有这个要求的可以使用这个方法
 			    var result = [];
@@ -65,7 +101,7 @@
 			    for(var i = 0; i < len; i++) {
 			        for(var j = i + 1; j < len; j++){
 			            if (arr[i] === arr[j]){
-			                j=++i;//i=i+1;j=i;
+			                j=++i;//i=i+1;j=i; 找到最近的那个后面再没有值的元素插进去
 			            }
 			        }
 			        result.push(arr[i]);
@@ -75,13 +111,13 @@
 			console.log(unique5([1,2,2,2,12,3,4,5]));
 			
 			
-			function unique6(arr){
+			function unique61(arr){
 				return [...(new Set(arr))];
 			}
 			console.log(unique5([1,2,2,2,12,3,4,5]));
 			
 			
-			function unique7(arr){
+			function unique62(arr){
 				return Array.from(new Set(arr));
 			}
 			console.log(unique6([1,2,2,2,12,3,4,5]));

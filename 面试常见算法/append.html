@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function append(parent,html){
+				if(typeof html==='string'){
+					var temp=document.createElement("div");
+					temp.innerHTML=html;
+					var frag=document.createDocumentFragment();
+					while(temp.firstChild){
+						frag.appendChild(temp.firstChild);
+					}
+					parent.appendChild(frag);
+				}else{
+					parent.append(html);
+					
+				}
+			}
+			var div="<div><h1>nihao</h1></div>";
+			append(document.body,div);
+			
+		</script>
+	</body>
+</html>
