@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str="avb123456789sd1234545";
+			var temp=str.split(/\D/);
+			var result="";
+			for(var i=0;i<temp.length;i++){
+				if(temp[i].length>result.length){
+					result=temp[i];
+				}
+			}
+			console.log(result);
+		</script>
+	</body>
+</html>

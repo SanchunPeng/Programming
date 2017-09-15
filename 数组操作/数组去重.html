@@ -20,7 +20,7 @@
 			
 			
 			function unique12(arr){
-				return a.concat().sort().filter(function(value, index, array) {
+				return arr.concat().sort().filter(function(value, index, array) {
 				    return !index || value != array[index - 1];
 				});
 			}
@@ -37,7 +37,7 @@
 				}
 				return result;
 			}
-			console.log(unique2([1,2,2,2,12,3,4,5]));
+			console.log(unique21([1,2,2,2,12,3,4,5]));
 			
 			function unique22(arr){//更快一点
 				var  result=[];
@@ -120,7 +120,7 @@
 			function unique62(arr){
 				return Array.from(new Set(arr));
 			}
-			console.log(unique6([1,2,2,2,12,3,4,5]));
+			console.log(unique62([1,2,2,2,12,3,4,5]));
 		</script>
 	</body>
 </html>

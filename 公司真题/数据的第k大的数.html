@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function _insertSort(arr) {
+			        for(let i = 1, len = arr.length; i < len; i++) {
+			            let index = i;
+			            while(index > 0) {
+			                if(arr[index] < arr[index-1]) {
+			                    let temp = arr[index];
+			                    arr[index] = arr[index-1];
+			                    arr[index-1] = temp;
+			                    index--;
+			                } else {
+			                    break;
+			                }
+			            }
+			        }
+			        return arr[2];   // 返回中位数
+			    }
+			
+			    // 获取当前数组的主元
+			    function getPivot(arr) {
+			        let len = arr.length;
+			        if(len <= 5) {
+			            _insertSort(arr);
+			            if(len%2 == 0) {
+			                return arr[len/2];
+			            }
+			            return arr[(len-1)/2];
+			        }
+			
+			        let res = [];
+			        for(let i = 0, num = parseInt(len/5); i <= num; i++) {
+			        	
+			           res.push(_insertSort(arr.slice(i*5,i*5+5)));
+			        }
+			        return getPivot(res);
+			}
+			
+			function solve(arr,k){
+				if(k>arr.length){
+					return;
+				}
+				var prvot=getPivot(arr),//在这里使用这个的原因是不会让无限循环，如果取的恰好是最小的活或者是最大的数就有可能无限循环
+				left=[],
+				right=[];
+				for(var i=0;i<arr.length;i++){
+					if(arr[i]<prvot){
+						left.push(arr[i]);
+					}else{
+						right.push(arr[i]);
+					}
+				}
+				var left_len=left.length;
+				if(k==left_len){
+					return prvot;
+				}else if(k>left_len){
+					return solve(right,k-left_len);
+				}else{
+					return solve(left,k);
+				}
+			}
+			console.log(solve([2,4,3,5,7],1));
+		</script>
+	</body>
+</html>
