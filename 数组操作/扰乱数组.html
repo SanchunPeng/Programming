@@ -11,14 +11,15 @@
 
 			//splice  O(n^2)
 			function shuffle1(arr) {
+				var _arr=arr.concat();
 				var result = [];
-				while (arr.length) {
-				    var index = ~~(Math.random() * arr.length);
-				    result.push(arr[index]);
-				    arr.splice(index, 1);
+				while (_arr.length) {
+				    var index = ~~(Math.random() * _arr.length);
+				    result.push(_arr[index]);
+				    _arr.splice(index, 1);
 				}
-				    return result;
-				}
+				return result;
+			}
 							
 			
 			//Math.random() O(nlogn)
@@ -35,13 +36,13 @@
 			//从后向前遍历
 			function shuffle3(arr) {
 			    var _arr = arr.concat();
-			    for (var i = _arr.length;i>0; i--) {
+			    for (var i = _arr.length-1;i>0; i--) {
 			    	var j = Math.floor(Math.random() * (i + 1));
 			    	var temp = _arr[i];
 			    	_arr[i] = _arr[j];
 			    	_arr[j] = temp;
 			    }
-			    return _array;
+			    return _arr;
 			}
 			//从前向后遍历
 			function shuffle4(arr){
@@ -60,7 +61,10 @@
     			return isNaN(parseInt(num, 10)) ? -1 : parseInt(num, 10);
     			对于正数和Math.floor结果是一样的，对于负数就不是
 			 */
-			
+			console.log(shuffle1(arr));
+			console.log(shuffle2(arr));
+			console.log(shuffle3(arr));
+			console.log(shuffle4(arr));
 		</script>
 	</body>
 </html>
