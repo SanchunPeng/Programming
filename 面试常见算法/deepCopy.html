@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function deepCopy(obj){
+				var result=obj instanceof Array ? [] : {};
+				if(typeof obj !=='object'){
+					return obj;
+				}else if(window.JSON){
+					return JSON.parse(JSON.stringify(obj));
+				}else{
+					for(var i in obj){
+						result[i]=obj[i] instanceof 'object'? deepCopy(obj[i]):obj[i];
+					}
+					return result;
+				}
+			}	
+		</script>
+		
+	</body>
+</html>
