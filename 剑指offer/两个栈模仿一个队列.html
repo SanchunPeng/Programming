@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//栈就直接使用数组了
+			function queue(){
+				var stack1=[],
+					stack2=[];
+				this.push=function(data){
+					stack1.push(data);
+				}
+				this.pop=function(){
+					if(stack2.length==0){
+						while(stack1.length!=0){
+							stack2.push(stack1.pop());
+						}
+					}
+					return stack2.pop();
+				}
+			}
+		</script>
+	</body>
+</html>
