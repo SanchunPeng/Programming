@@ -46,6 +46,36 @@
 				}
 			}
 			console.log(quickSort1([1,5,3,9,7,24,8,6]));
+			
+			
+			function quickSort2(arr,low,high){   //适合大型数据集合，处理小数据集时反而会下降
+				if(low>=high){
+					return;
+				}
+				var middle=partition(arr,low,high);
+				quickSort2(arr,low,middle);
+				quickSort2(arr,middle+1,high);
+	
+			}
+			function partition(arr,low,high){
+				var temp=arr[low];
+				while (low < high) {
+					while (arr[high] >= temp && high > low) {
+						high--;
+					}
+					arr[low] = arr[high];
+					while (temp >= arr[low] && high > low) {
+						low++;
+					}
+					arr[high] = arr[low];
+				}
+				arr[high] = temp;
+				return high;	
+			}
+			var arr=[1,5,3,9,7,24,8,6];
+			quickSort2(arr,0,7);
+			console.log(arr);
+			
 		</script>
 	</body>
 </html>
